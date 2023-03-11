@@ -17,13 +17,46 @@
     </header>
 
     <main class="bg-white pb-10  pt-16 mx-auto  ">
-      <h1 class="text-center mb-10 text-[24px]">{{ categories }}</h1>
+      <h1 class="text-center text-[24px] font-bold">Main Cateogry:</h1>
+      {% for sublist in categories %}
+      {% for item in sublist %}
+      <p class="text-center text-[20px] pb-3"> <span class="text-red-500 text-[28px]">"</span> {{ item }} <span
+          class="text-red-500 text-[28px]">"</span></p>
+      {% endfor %}
+      {% endfor %}
+      <!-- <h1>{{ categories }}</h1> -->
+      {% for item in brand %}
+      <h1 class="text-center text-[20px] mt-3 font-semibold">Product brand: <span class="block text-[20px] font-medium">
+          "
+          {{item}}
+          "</span></h1>
+      {% endfor %}
+      <h2 class="text-[22px] font-semibold px-10 py-3  mt-3 ">Price Ranges:</h2>
+      <div class="flex justify-between items-center gap-8 px-16 w-[100%] flex-wrap">
+        {% for key, values in quantiles.items %}
+        <div class="w-[16%] bg-gray-200 h-[100px]  flex flex-col justify-center items-center ">
+          {% if key == 'this' %}
+          <p class="text-[18px]">With In:</p>
+          <p class="text-[20px] font-semibold">" {{values}} "</p>
+          {% else %}
+          <p class="text-[18px]">{{ key }}</p>
+          <p class="text-[16px] font-semibold ">{{values}}</p>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
 
       <form class="max-w-min mx-auto px-8 h-[68vh]">
         <div class="my-4">
           <label class="block text-[20px] py-2 font-medium" for="name">Name:</label>
           <input id="name" class="w-full py-2  indent-5 border-2 border-black rounded-md block outline-none text-[18px]"
             type="text" placeholder="Product Name">
+        </div>
+        <div class="my-4">
+          <label class="block text-[20px] py-2 font-medium" for="name">Price:</label>
+          <input id="price"
+            class="w-full py-2  indent-5 border-2 border-black rounded-md block outline-none text-[18px]" type="number"
+            placeholder="Product price eg:30000">
         </div>
         <div>
           <label class="block text-[20px] py-1 font-medium " for="desc">Description:</label>
@@ -42,12 +75,12 @@
   <script>
     const name = document.getElementById( 'name' );
     const desc = document.getElementById( 'desc' );
+    const price = document.getElementById( 'price' );
     async function getCategory ( e )
     {
 
       e.preventDefault();
-      document.location.href = `http://localhost:8000/?name=${ name.value }&description=${ desc.value }`;
-
+      document.location.href = `http://localhost:8000/?name=${ name.value }&description=${ desc.value }&price=${ price.value }`;
 
     }
   </script>
