@@ -3,8 +3,8 @@ from joblib import load
 
 from django.conf import settings
 
-text_clf = load(settings.BASE_DIR.parent  / "ecommerce_classifier/classification_model1.joblib")
-encoder = load(settings.BASE_DIR.parent  / "ecommerce_classifier/category_encoder1.joblib")
+text_clf = load("/home/badu/workspace/collegeProject/ecommerce-product-classifier/classification_model1.joblib")
+encoder = load("/home/badu/workspace/collegeProject/ecommerce-product-classifier/category_encoder1.joblib")
 
 
 def home(request):

@@ -1,1 +1,57 @@
-<h1>{{ categories }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorizer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+  <div class="max-w-[1200px] mx-auto  px-10 ">
+
+    <header class="bg-gray-300 shadow-xl  ">
+      <h1 class="text-center text-4xl font-bold py-6">Categorizer</h1>
+    </header>
+
+    <main class="bg-white pb-10  pt-16 mx-auto  ">
+      <h1 class="text-center mb-10 text-[24px]">{{ categories }}</h1>
+
+      <form class="max-w-min mx-auto px-8 h-[68vh]">
+        <div class="my-4">
+          <label class="block text-[20px] py-2 font-medium" for="name">Name:</label>
+          <input id="name" class="w-full py-2  indent-5 border-2 border-black rounded-md block outline-none text-[18px]"
+            type="text" placeholder="Product Name">
+        </div>
+        <div>
+          <label class="block text-[20px] py-1 font-medium " for="desc">Description:</label>
+          <textarea id="desc" class="border-black border-2 px-4 outline-none indent-4 py-1 text-[18px] rounded-md"
+            name="desc" id="desc" cols="30" rows="5"></textarea>
+        </div>
+        <button onclick="getCategory(event)"
+          class="block text-center bg-red-200 text-center mx-auto text-black px-8 rounded-sm text-xl shadow-xl font-semibold mt-5 py-3 "
+          type="submit">Categorize</button>
+      </form>
+
+    </main>
+
+  </div>
+
+  <script>
+    const name = document.getElementById( 'name' );
+    const desc = document.getElementById( 'desc' );
+    async function getCategory ( e )
+    {
+
+      e.preventDefault();
+      document.location.href = `http://localhost:8000/?name=${ name.value }&description=${ desc.value }`;
+
+
+    }
+  </script>
+
+</body>
+
+</html>
