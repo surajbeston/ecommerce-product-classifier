@@ -57,10 +57,20 @@
         {% for key, values in quantiles.items %}
         <div class="w-[16%] bg-gray-200 h-[100px]  flex flex-col justify-center items-center ">
           {% if key == 'this' %}
-          <p class="text-[18px]">With In:</p>
+          <p class="text-[18px] text-center">With In:</p>
           <p class="text-[20px] font-semibold">" {{values}} "</p>
           {% else %}
-          <p class="text-[18px]">{{ key }}</p>
+          {% if key == 'first' %}
+          <p class="text-[18px]">20th percentile</p>
+          {% elif key == 'second' %}
+          <p class="text-[18px]">40th percentile</p>
+          {% elif key == 'third' %}
+          <p class="text-[18px]">60th percentile</p>
+          {% elif key == 'fourth' %}
+          <p class="text-[18px]">80th percentile</p>
+          {% else %}
+          <p class="text-[18px]">100th percentile</p>
+          {% endif %}
           <p class="text-[16px] font-semibold ">{{values}}</p>
           {% endif %}
         </div>
